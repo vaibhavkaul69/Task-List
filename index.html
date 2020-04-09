@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My First TODO List.</title>
+        <link rel="icon" href="app-icon.png"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="style.css"/>
+         <!--Web app manfest file for android devices-->
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#dd62ff" />
+    </head>
+    <body>
+        <h1 class="main-heading">TODO List</h1>
+        <div class="list" id="mainList">
+            <form class="inputListName" name="form-input" accept="index.html" >
+                <h4 class="addItemHeading">Add Items To The List</h4>
+                <hr/>
+                <input type="text" class="inputName" placeholder="Type Task name"/>
+                <input type="submit" class="submitName" value="Add"/>
+                <p id="errorMessage"></p>
+            </form>
+            <ul id="listContainer"></ul>
+        </div>
+        <footer>
+            <h4>This TODO List is Made With &hearts; By Vaibhav Kaul</h4>
+        </footer>
+    </body>
+    <script>
+        //Check if the service worker exists in the navigator object.
+        if ("serviceWorker" in navigator) 
+    {
+        window.addEventListener("load", function() 
+        {
+        navigator.serviceWorker
+            .register("service-worker.js")
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err))
+        })
+    }
+  </script>
+    <script  src="app.js"></script>
+</html>

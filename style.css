@@ -1,0 +1,160 @@
+*
+{
+    padding:10px;
+    margin:0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+body
+{
+    background:url('bg-body.jpg') center no-repeat;
+    background-size: 100% 100%;
+}
+.main-heading
+{
+    text-align: center;
+    font-size: 5rem;
+    width:100%;
+    font-weight:lighter;
+    color:#00bf8f;
+}
+#mainList
+{
+    min-height:500px;
+    width:500px;
+    background-color: #0009;
+    margin:3rem auto;
+    padding:30px;
+    box-shadow:0px 0px 8px 0px #000;
+}
+.inputListName
+{
+    margin:0.5rem auto;
+    min-width:100%;
+}
+.inputListName > .addItemHeading
+{
+    text-align:center;
+    font-size:2rem;
+    font-weight: lighter;
+    color:#00bf8f;
+}
+.inputListName > hr
+{
+    border:1px solid #00bf8f;
+    width:100px;
+    padding:0px !important;
+    margin:1rem auto;
+}
+
+.inputListName > input[type="text"]
+{
+    height:45px;
+    width:65%;
+    font-size: 1rem;
+    float:left;
+    text-align:center; 
+    color:#00bf8f;
+    font-weight: bolder;
+    border:1px solid #0b8793;
+    border-radius:10px; 
+}
+.inputListName > input[type="text"]:focus
+{
+    box-shadow:0px 0px 8px 0px #0009;
+}
+.inputListName > input[type="submit"]
+{
+    height:45px;
+    width:30%;
+    margin-left:10px;
+    float:left;
+    border:none;
+    background:linear-gradient(to right,#2c3e50,#3498db);
+    color:#fff;
+    font-weight:bold;
+    border-radius:10px;
+    font-size: 1rem; 
+    transition: all 0.5s ease-in-out;  
+}
+.inputListName > input[type="submit"]:hover
+{
+    color:white;
+    background:linear-gradient(to right,#00bf8f,#00f260);
+}
+#errorMessage
+{
+    color:#c31432;
+    position: relative;
+    top:10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.error-img
+{
+    height:80px;
+    width:80px;
+    border-radius: 20px;
+}
+#listContainer
+{
+    counter-reset: section;
+}
+ #listContainer > li
+{
+    list-style-type: none;
+    width:100%;
+    padding:15px;
+    min-height:52px;
+    margin-top:10px;
+    border:1px solid #00bf8f;
+    color:#00bf8f;
+    font-weight: bolder;
+}
+#listContainer > li::before {
+    counter-increment: section;
+    content: counter(section) ": ";
+    color:#00f260;
+  }
+#listContainer > li >.closeBtn
+{
+    float:right;
+    color:red;
+    border:none;
+    height:50px;
+    width:40px;
+    position:relative;
+    top:-15px;
+    right:-15px;
+    font-weight: bolder;
+    text-align: center;
+    background:#00f260;
+}
+#listContainer > li:hover
+{
+    background:#00bf8f;
+    color:#fff;
+}
+footer >h4
+{
+    text-align: center;
+    background-color: #00bf8f;
+    color:#fff;
+    min-height:40px;
+}
+
+@media only screen and (max-width:500px)
+{
+    body
+    {
+        background:url('bg-body.jpg') center no-repeat;
+        background-size: cover;
+    }
+    #mainList
+    {
+        width:100%;
+    }
+}
