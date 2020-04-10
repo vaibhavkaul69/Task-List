@@ -1,8 +1,9 @@
+
 //Here we select the input whose value will be the name of new create list whithin list container.
 var addItemBtn=document.querySelector('input[type="submit"]');
 
 //Here we select the add button that adds the the value of above input to list container.
-var inputItemName=document.querySelector('input[type="text"]');
+var inputItemName=document.querySelector('.inputName');
 
 //Trigger an click event when we click the add buttton and call addListItem() function.
 addItemBtn.addEventListener('click',addListItem);
@@ -19,10 +20,10 @@ listContainer.addEventListener('click',deleteListItem);
         //This prevents the data of list from deleting when the function finishes its work.
         ev.preventDefault();
         
-        if(inputItemName.value=="" || inputItemName.value==" ")
+        if(inputItemName.value=="" || inputItemName.value==" "  )
         {
             //Display an error message on the webpage.
-            document.getElementById('errorMessage').innerHTML='<img src="error-image.jpg" class="error-img" alt="Hindustani Bhau"/>'+'<h4>Please Enter Some Value In The Text-Box.</h4>';
+            document.getElementById('errorMessage').innerHTML='<h4 style="background:#00f260; border:3px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
         }
         else
         {
@@ -71,4 +72,13 @@ listContainer.addEventListener('click',deleteListItem);
    //WHen the body loads then fetch the list items from the local storage and append them in the list container.
     document.body.onload=()=>{
        listContainer.innerHTML=JSON.parse(localStorage.getItem('localListItems'));
+       let listItemName=document.getElementsByTagName('li');
+        console.log("The number of list items are : "+listItemName.length);
+       inputItemName.focus();
+       
     }
+
+        let a=[1,2,3];
+        console.log(a);
+        a[40]=123;
+        console.log(a);
