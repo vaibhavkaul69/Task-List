@@ -41,7 +41,7 @@ listContainer.addEventListener('click',deleteListItem);
                 <p class='listContent'>${inputItemName.value}</p>
                  <button class='closeBtn'> X</button>
                  <button class="editBtn" onclick='editTask(this)'>
-                     <img src="/pencil.png" alt='Edit the task'/>
+                     <img src="pencil.png" alt='@'/>
                  </button>
              </li>
             `;
@@ -80,12 +80,12 @@ listContainer.addEventListener('click',deleteListItem);
         if(editable){
             e.parentNode.children[0].setAttribute('contenteditable','true');
             console.log(e.children[0].src);
-            e.children[0].src='/done.png';
+            e.children[0].src='done.png';
             editable=false;
         }
         else{
             e.parentNode.children[0].setAttribute('contenteditable','false');
-            e.children[0].src='/pencil.png';
+            e.children[0].src='pencil.png';
             editable=true;
             if(e.parentNode.children[0].textContent.length>0){
                 localStorage.setItem('localListItems',JSON.stringify(listContainer.innerHTML));
