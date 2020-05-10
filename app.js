@@ -23,7 +23,7 @@ listContainer.addEventListener('click',deleteListItem);
         //This prevents the data of list from deleting when the function finishes its work.
         ev.preventDefault();
         
-        if(inputItemName.value=="" || inputItemName.value==" " || inputItemName.value=="  "  )
+        if(inputItemName.value=="" || inputItemName.value==" "  )
         {
             //Display an error message on the webpage.
             document.getElementById('errorMessage').innerHTML='<h4 style="background:#0009; color:#00f260; border:1px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
@@ -101,6 +101,7 @@ listContainer.addEventListener('click',deleteListItem);
    const fetchDataFromLocalStorage=()=>{
        listContainer.innerHTML=JSON.parse(localStorage.getItem('localListItems'));
        let listItemName=document.getElementsByTagName('li');
+        console.log("The number of list items are : "+listItemName.length);
        inputItemName.focus();
        
     }
