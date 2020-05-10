@@ -104,7 +104,7 @@ listContainer.addEventListener('click',deleteListItem);
         console.log("The number of list items are : "+listItemName.length);
        inputItemName.focus();
        
-    }
+    };
 
     //Background image displays on complete loading
 
@@ -116,13 +116,11 @@ listContainer.addEventListener('click',deleteListItem);
     });
 
     //When window loads then the list box appears
-    window.addEventListener('DOMContentLoaded',()=>{
-        document.getElementById('mainList').style.cssText='transform:translateY(0px);';
-        document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
-        console.log('DOmContent loaded');
+    window.addEventListener('load',()=>{
         setTimeout(fetchDataFromLocalStorage,1500);
     });
 
-    window.addEventListener('load',()=>{
-        console.log('Document loaded');
+    window.addEventListener('DOMContentLoaded',()=>{
+        document.getElementById('mainList').style.cssText='transform:translateY(0px);';
+        document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
     });
