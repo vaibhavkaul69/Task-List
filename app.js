@@ -22,16 +22,11 @@ listContainer.addEventListener('click',deleteListItem);
     {
         //This prevents the data of list from deleting when the function finishes its work.
         ev.preventDefault();
-
-        //Match for white spaces 
-        let regex=inputItemName.value.match(/ /g);
-        console.log(regex)
-
-        if(inputItemName.value=="" || regex.length>0  )
+        
+        if(inputItemName.value=="" || inputItemName.value==" " || inputItemName.value=="  "  )
         {
             //Display an error message on the webpage.
             document.getElementById('errorMessage').innerHTML='<h4 style="background:#0009; color:#00f260; border:1px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
-            inputItemName.value='';
         }
         else
         {
@@ -125,4 +120,8 @@ listContainer.addEventListener('click',deleteListItem);
         document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
         console.log('DOmContent loaded');
         setTimeout(fetchDataFromLocalStorage,1500);
+    });
+
+    window.addEventListener('load',()=>{
+        console.log('Document loaded');
     });
