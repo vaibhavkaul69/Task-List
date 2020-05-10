@@ -2,6 +2,9 @@
 //Here we select the input whose value will be the name of new create list whithin list container.
 var addItemBtn=document.querySelector('input[type="submit"]');
 
+//A state variable which keeps track for the editable content of the list
+let editable=true;
+
 //Here we select the add button that adds the the value of above input to list container.
 var inputItemName=document.querySelector('.inputName');
 
@@ -35,8 +38,12 @@ listContainer.addEventListener('click',deleteListItem);
             listContainer.innerHTML+=
             `
             <li class='listItem'>
-            ${inputItemName.value}
-                <button class='closeBtn'>X</button>
+                <p class='listContent'>${inputItemName.value}</p>
+                 <button class='closeBtn'> X</button>
+                 <button class="editBtn" onclick='editTask(this)'>
+                     <img src="/pencil.png" alt='Edit the task'/>
+                 </button>
+             </li>
             `;
 
             //Add the list container into local storage by stringifying it.
@@ -68,9 +75,30 @@ listContainer.addEventListener('click',deleteListItem);
         
         
     }
+
+    function editTask(e){
+        if(editable){
+            e.parentNode.children[0].setAttribute('contenteditable','true');
+            console.log(e.children[0].src);
+            e.children[0].src='/done.png';
+            editable=false;
+        }
+        else{
+            e.parentNode.children[0].setAttribute('contenteditable','false');
+            e.children[0].src='/pencil.png';
+            editable=true;
+            if(e.parentNode.children[0].textContent.length>0){
+                localStorage.setItem('localListItems',JSON.stringify(listContainer.innerHTML));
+            }
+            else{
+                alert('Since You Have Not Entered Anything \n So The Previous Value Will Be Displayed on Page Reload.');
+            }
+           
+        }
+    }
     
    //WHen the body loads then fetch the list items from the local storage and append them in the list container.
-    document.body.onload=()=>{
+   const fetchDataFromLocalStorage=()=>{
        listContainer.innerHTML=JSON.parse(localStorage.getItem('localListItems'));
        let listItemName=document.getElementsByTagName('li');
         console.log("The number of list items are : "+listItemName.length);
@@ -78,7 +106,19 @@ listContainer.addEventListener('click',deleteListItem);
        
     }
 
-        let a=[1,2,3];
-        console.log(a);
-        a[40]=123;
-        console.log(a);
+    //Background image displays on complete loading
+
+    const backImg=new Image();
+    backImg.src='/bg-body.jpg';
+    backImg.addEventListener('load',()=>{
+         console.log('Loaded image');
+         document.body.style.cssText="background-image:url('/bg-body.jpg');"
+    });
+
+    //When window loads then the list box appears
+    window.onload=()=>{
+        document.getElementById('mainList').style.cssText='transform:translateY(0px);';
+        document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
+
+        setTimeout(fetchDataFromLocalStorage,1500);
+    }

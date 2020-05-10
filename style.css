@@ -7,7 +7,7 @@
 }
 body
 {
-    background:url('bg-body.jpg') center no-repeat;
+    background-image:linear-gradient(to right bottom,#b92b27,#1565C0);
     background-size: 100% 100%;
 }
 .main-heading
@@ -25,6 +25,8 @@ body
     background-color: #0009;
     margin:3rem auto;
     padding:30px;
+    transform: translateY(-1000px);
+    transition: all 0.5s ease-in-out;
     box-shadow:0px 0px 8px 0px #000;
 }
 .inputListName
@@ -37,7 +39,9 @@ body
 {
     text-align:center;
     font-size:2rem;
+    transform: translateX(2000px);
     font-weight: lighter;
+    transition:all 1s ease-in-out;
     color:#00bf8f;
 }
 .inputListName > hr
@@ -114,15 +118,21 @@ body
     padding-bottom:15px;
     padding-left:5px;
     position: relative;
-    min-height:52px;
+    min-height:100px;
     margin-top:10px;
     text-align:left;
     word-break:break-all;
     border:1px solid #00bf8f;
     color:#00bf8f;
     font-weight: bolder;
+    transition:all 1s ease-in-out;
 }
-#listContainer > li::before {
+#listContainer > li >p{
+    padding:0px;
+    outline: none;
+}
+
+#listContainer > li >p::before {
     counter-increment: section;
     content: counter(section) ": ";
     color:#00f260;
@@ -135,17 +145,37 @@ body
     right:0;
     top:0;
     border:none;
-    height:100%;
+    border-bottom:1px solid #000;
+    height:50%;
     width:40px;
     font-weight: bolder;
     text-align: center;
     background:#00f260;
 }
-#listContainer > li:hover
+#listContainer > li >.editBtn
 {
-    background:#00bf8f;
-    color:#fff;
+    position: absolute;
+    color:red;
+    right:0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom:0;
+    border:none;
+    height:50%;
+    width:40px;
+    font-weight: bolder;
+    text-align: center;
+    background:#00f260;
 }
+#listContainer > li >.editBtn > img
+{
+    position: absolute;
+    right:-5px;
+    height:auto;
+    width:50px;
+}
+
 footer >h4
 {
     text-align: center;
