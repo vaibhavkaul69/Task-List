@@ -22,11 +22,16 @@ listContainer.addEventListener('click',deleteListItem);
     {
         //This prevents the data of list from deleting when the function finishes its work.
         ev.preventDefault();
-        
-        if(inputItemName.value=="" || inputItemName.value==" "  )
+
+        //Match for white spaces 
+        let regex=inputItemName.value.match(/ /g);
+        console.log(regex)
+
+        if(inputItemName.value=="" || regex.length>0  )
         {
             //Display an error message on the webpage.
-            document.getElementById('errorMessage').innerHTML='<h4 style="background:#00f260; border:3px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
+            document.getElementById('errorMessage').innerHTML='<h4 style="background:#0009; color:#00f260; border:1px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
+            inputItemName.value='';
         }
         else
         {
@@ -101,7 +106,6 @@ listContainer.addEventListener('click',deleteListItem);
    const fetchDataFromLocalStorage=()=>{
        listContainer.innerHTML=JSON.parse(localStorage.getItem('localListItems'));
        let listItemName=document.getElementsByTagName('li');
-        console.log("The number of list items are : "+listItemName.length);
        inputItemName.focus();
        
     }
@@ -111,14 +115,14 @@ listContainer.addEventListener('click',deleteListItem);
     const backImg=new Image();
     backImg.src='/bg-body.jpg';
     backImg.addEventListener('load',()=>{
-         console.log('Loaded image');
+
          document.body.style.cssText="background-image:url('/bg-body.jpg');"
     });
 
     //When window loads then the list box appears
-    window.onload=()=>{
+    window.addEventListener('DOMContentLoaded',()=>{
         document.getElementById('mainList').style.cssText='transform:translateY(0px);';
         document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
-
+        console.log('DOmContent loaded');
         setTimeout(fetchDataFromLocalStorage,1500);
-    }
+    });
