@@ -109,7 +109,7 @@ listContainer.addEventListener('click',deleteListItem);
     //Background image displays on complete loading
 
     const backImg=new Image();
-    backImg.src='/bg-body.jpg';
+    backImg.src='bg-body.jpg';
     backImg.addEventListener('load',()=>{
 
          document.body.style.cssText="background-image:url('/bg-body.jpg');"
