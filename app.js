@@ -112,7 +112,7 @@ listContainer.addEventListener('click',deleteListItem);
     backImg.src='bg-body.jpg';
     backImg.addEventListener('load',()=>{
 
-         document.body.style.cssText="background-image:url('/bg-body.jpg');"
+         document.body.style.cssText="background-image:url('bg-body.jpg');"
     });
 
     //When window loads then the list box appears
