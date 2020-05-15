@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task-Maker</title>
+        <link rel="icon" href="app-icon.png"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+         <!--Web app manfest file for android devices-->
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#00bf8f" />
+        <!-- ios support -->
+        <link rel="apple-touch-icon" href="icon-72x72.png" />
+        <link rel="apple-touch-icon" href="icon-96x96.png" />
+        <link rel="apple-touch-icon" href="icon-128x128.png" />
+        <link rel="apple-touch-icon" href="app-icon-144x144.png" />
+        <link rel="apple-touch-icon" href="icon-152x152.png" />
+        <link rel="apple-touch-icon" href="icon-192x192.png" />
+        <link rel="apple-touch-icon" href="icon-384x384.png" />
+        <link rel="apple-touch-icon" href="icon-512x512.png" />
+        <meta name="apple-mobile-web-app-status-bar" content="#00bf8f;" />
+        <style>
+            *
+{
+    padding:10px;
+    margin:0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+body
+{
+    min-height:100vh;
+    background-image:linear-gradient(to right bottom,#b92b27,#1565C0);
+    background-size: 100% 100%;
+}
+.main-heading
+{
+    text-align: center;
+    font-size: 5rem;
+    width:100%;
+    font-weight:lighter;
+    color:#00bf8f;
+}
+#mainList
+{
+    min-height:500px;
+    width:500px;
+    background-color: #0009;
+    margin:3rem auto;
+    padding:30px;
+    transform: translateY(-1000px);
+    transition: all 0.5s ease-in-out;
+    box-shadow:0px 0px 8px 0px #000;
+}
+.inputListName
+{
+    margin:0.5rem auto;
+    min-width:100%;
+    height:auto;
+}
+.inputListName > .addItemHeading
+{
+    text-align:center;
+    font-size:2rem;
+    transform: translateX(2000px);
+    font-weight: lighter;
+    transition:all 1s ease-in-out;
+    color:#00bf8f;
+}
+.inputListName > hr
+{
+    border:1px solid #00bf8f;
+    width:100px;
+    padding:0px !important;
+    margin:1rem auto;
+}
+
+.inputListName > .inputName
+{
+    height:70px;
+    overflow-y:auto;
+    resize: none;
+    width:65%;
+    font-size: 1rem;
+    float:left;
+    text-align:left; 
+    color:#00bf8f;
+    font-weight: bolder;
+    border:1px solid #0b8793;
+    border-radius:10px; 
+}
+.inputListName > input[type="text"]:focus
+{
+    box-shadow:0px 0px 8px 0px #0009;
+}
+.inputListName > input[type="submit"]
+{
+    height:50px;
+    width:30%;
+    margin-left:10px;
+    margin-top:10px;
+    float:left;
+    border:none;
+    background:linear-gradient(to right,#2c3e50,#3498db);
+    filter: drop-shadow(0px 1px 5px #00f260 );
+    color:#fff;
+    font-weight:bold;
+    border-radius:10px;
+    font-size: 1rem;
+    transition: all 0.5s ease-in-out;
+}
+.inputListName > .inputName::placeholder
+{
+   font-weight:lighter;
+}
+.inputListName > input[type="submit"]:hover
+{
+    color:white;
+    background:linear-gradient(to right,#00bf8f,#00f260);
+    filter: drop-shadow(0px 1px 5px #3498db);
+}
+#errorMessage
+{
+    color:#c31432;
+    font-weight: bold;
+    display:block;
+    margin-top:1rem;
+}
+
+#listContainer
+{
+    counter-reset: section;
+    margin-top: 5rem;
+}
+ #listContainer > li
+{
+    list-style-type: none;
+    width:100%;
+    padding-top:15px;
+    padding-right:45px;
+    padding-bottom:15px;
+    padding-left:5px;
+    position: relative;
+    min-height:100px;
+    margin-top:10px;
+    text-align:left;
+    word-break:break-all;
+    border:1px solid #00bf8f;
+    color:#00bf8f;
+    font-weight: bolder;
+    transition:all 1s ease-in-out;
+}
+#listContainer > li >p{
+    padding:0px;
+    outline: none;
+}
+
+#listContainer > li >p::before {
+    counter-increment: section;
+    content: counter(section) ": ";
+    color:#00f260;
+    width: 0px;
+  }
+#listContainer > li >.closeBtn
+{
+    position: absolute;
+    color:red;
+    right:0;
+    top:0;
+    border:none;
+    border-bottom:1px solid #000;
+    height:50%;
+    width:40px;
+    font-weight: bolder;
+    text-align: center;
+    background:#00f260;
+}
+#listContainer > li >.editBtn
+{
+    position: absolute;
+    color:red;
+    right:0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom:0;
+    border:none;
+    height:50%;
+    width:40px;
+    font-weight: bolder;
+    text-align: center;
+    background:#00f260;
+}
+#listContainer > li >.editBtn > img
+{
+    position: absolute;
+    right:-5px;
+    height:auto;
+    width:50px;
+}
+
+footer >h4
+{
+    text-align: center;
+    background-color: #00bf8f;
+    color:#fff;
+    min-height:40px;
+}
+
+@media only screen and (max-width:500px)
+{
+    body
+    {
+        background:url('bg-body.jpg') center no-repeat;
+        background-size: cover;
+    }
+    #mainList
+    {
+        width:100%;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <h1 class="main-heading">TODO List</h1>
+        <div class="list" id="mainList">
+            <form class="inputListName" name="form-input" accept="index.html" >
+                <h4 class="addItemHeading">Add Items To The List</h4>
+                <hr/>
+                <div id="errorMessage"></div>
+                <textarea  class="inputName" placeholder="Enter Task"></textarea>
+                <input type="submit" class="submitName" value="Add"/>
+            </form>
+            <ul id="listContainer">
+                   
+            </ul>
+        </div>
+        <footer>
+            <h4>This TODO List is Made With &hearts; By Vaibhav Kaul</h4>
+        </footer>
+    </body>
+   
+    <script>
+        
+        //Check if the service worker exists in the navigator object.
+        if ("serviceWorker" in navigator) 
+    {
+        window.addEventListener("load", function() 
+        {
+        navigator.serviceWorker
+            .register("service-worker.js")
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err))
+        })
+    }
+    
+  </script>
+  
+    <script>
+        
+//Here we select the input whose value will be the name of new create list whithin list container.
+var addItemBtn=document.querySelector('input[type="submit"]');
+
+//A state variable which keeps track for the editable content of the list
+let editable=true;
+
+//Here we select the add button that adds the the value of above input to list container.
+var inputItemName=document.querySelector('.inputName');
+
+//Trigger an click event when we click the add buttton and call addListItem() function.
+addItemBtn.addEventListener('click',addListItem);
+
+//Here we select the list container.
+const listContainer=document.getElementById('listContainer');
+
+//Add an event listener on the list container.
+listContainer.addEventListener('click',deleteListItem);
+
+    //Function is called when add button is clicked.
+    function addListItem(ev)
+    {
+        //This prevents the data of list from deleting when the function finishes its work.
+        ev.preventDefault();
+        
+        if(inputItemName.value=="" || inputItemName.value==" "  )
+        {
+            //Display an error message on the webpage.
+            document.getElementById('errorMessage').innerHTML='<h4 style="background:#0009; color:#00f260; border:1px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
+        }
+        else
+        {
+            
+            //Remove the error message from the page.
+            document.getElementById('errorMessage').innerHTML='';
+
+            //Add the list item in the list container here by using innerHTML property.
+            listContainer.innerHTML+=
+            `
+            <li class='listItem'>
+                <p class='listContent'>${inputItemName.value}</p>
+                 <button class='closeBtn'> X</button>
+                 <button class="editBtn" onclick='editTask(this)'>
+                     <img src="pencil.png" alt='@'/>
+                 </button>
+             </li>
+            `;
+
+            //Add the list container into local storage by stringifying it.
+            localStorage.setItem('localListItems',JSON.stringify(listContainer.innerHTML));
+
+            //Once a list item is added clear/reset the input.
+            inputItemName.value='';
+        }
+        
+}
+
+    //Function gets called when the delete cross button is clicked on a list item.
+    function deleteListItem(e)
+    {
+        e.preventDefault();
+
+        //Check which child of list container contains class=closeBtn and point to that child.
+        if(e.target.classList.contains('closeBtn'))
+        {
+            if(confirm('Are You Sure About That??'))
+            {
+                //Once the child having closeBtn class is found then removes its parent from the DOM.
+                e.target.parentNode.remove();
+            }
+
+            //Update the list container to local storage.
+            localStorage.setItem('localListItems',JSON.stringify(listContainer.innerHTML));
+        }
+        
+        
+    }
+
+    function editTask(e){
+        if(editable){
+            e.parentNode.children[0].setAttribute('contenteditable','true');
+            console.log(e.children[0].src);
+            e.children[0].src='done.png';
+            editable=false;
+        }
+        else{
+            e.parentNode.children[0].setAttribute('contenteditable','false');
+            e.children[0].src='pencil.png';
+            editable=true;
+            if(e.parentNode.children[0].textContent.length>0){
+                localStorage.setItem('localListItems',JSON.stringify(listContainer.innerHTML));
+            }
+            else{
+                alert('Since You Have Not Entered Anything \n So The Previous Value Will Be Displayed on Page Reload.');
+            }
+           
+        }
+    }
+    
+   //WHen the body loads then fetch the list items from the local storage and append them in the list container.
+   const fetchDataFromLocalStorage=()=>{
+       listContainer.innerHTML=JSON.parse(localStorage.getItem('localListItems'));
+       let listItemName=document.getElementsByTagName('li');
+        console.log("The number of list items are : "+listItemName.length);
+       inputItemName.focus();
+       
+    };
+
+
+    //When window loads then the list box appears
+    window.addEventListener('load',()=>{
+        setTimeout(fetchDataFromLocalStorage,1500);
+    });
+
+    window.addEventListener('DOMContentLoaded',()=>{
+        document.getElementById('mainList').style.cssText='transform:translateY(0px);';
+        document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
+    });
+    </script>
+</html>

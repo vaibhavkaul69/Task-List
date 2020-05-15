@@ -1,7 +1,6 @@
-const staticCache = "list-v1";
+const staticCache = "list-v2";
+const fallbackCache='F-cache';
 const assets = [
-  "/",  
-  "/index.html",
   "/app.js",
   "/style.css",
   "/app-icon.png",
@@ -21,9 +20,11 @@ const assets = [
 ];
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
-    caches.open(staticCache).then(cache => {
+    caches.open(staticCache)
+    .then(cache => {
       cache.addAll(assets)
     })
+    .catch(error=>console.log(error))
   )
   //Activates on its own
   self.skipWaiting();
@@ -34,7 +35,7 @@ self.addEventListener('activate',evt=>{
     caches.keys()
     .then(arrayRes=>{
       arrayRes.map(element=>{
-        if(staticCache!==element){
+        if(element!==staticCache && element!==fallbackCache){
           caches.delete(element);
         }
       })
@@ -45,8 +46,14 @@ self.addEventListener('activate',evt=>{
 self.addEventListener("fetch", fetchEvent => {
     fetchEvent.respondWith(
       caches.match(fetchEvent.request)
-      .then(res => {
-        return res || fetch(fetchEvent.request)
+      .then(cacheRes => {
+        return cacheRes || fetch(fetchEvent.request).then(fetchRes=>{
+          return caches.open('F-cache').then(openedCache=>{
+            openedCache.put(fetchEvent.request.url,fetchRes.clone());
+            return fetchRes;
+          })
+        })
       })
+      .catch(()=>caches.match('/fallback.html'))
     );
   });
