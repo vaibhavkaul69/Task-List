@@ -1,5 +1,5 @@
-const staticCache = "list-v3";
-const fallbackCache='F-cache';
+const staticCache = "list-v1";
+const fallbackCache='F-cache-v1';
 const assets = [
   "/",
   "/index.html",
