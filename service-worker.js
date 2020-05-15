@@ -1,6 +1,8 @@
-const staticCache = "list-v2";
+const staticCache = "list-v3";
 const fallbackCache='F-cache';
 const assets = [
+  "/",
+  "/index.html",
   "/app.js",
   "/style.css",
   "/app-icon.png",
