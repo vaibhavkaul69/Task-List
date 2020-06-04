@@ -124,3 +124,5 @@ listContainer.addEventListener('click',deleteListItem);
         document.getElementById('mainList').style.cssText='transform:translateY(0px);';
         document.querySelector('.addItemHeading').style.cssText='transform:translateX(0px);';
     });
+
+    

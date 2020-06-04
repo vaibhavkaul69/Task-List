@@ -152,12 +152,14 @@ body
     font-weight: bolder;
     text-align: center;
     background:#00f260;
+    outline: none;
 }
 #listContainer > li >.editBtn
 {
     position: absolute;
     color:red;
     right:0px;
+    outline: none;
     display: flex;
     align-items: center;
     justify-content: center;
