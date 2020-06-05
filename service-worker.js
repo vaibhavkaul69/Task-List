@@ -33,11 +33,13 @@ self.addEventListener('activate',evt=>{
   evt.waitUntil(
     caches.keys()
     .then(arrayRes=>{
-      arrayRes.map(element=>{
-        if(staticCache!==element){
-          caches.delete(element);
-        }
-      })
+     let removeArrayElement= arrayRes.filter(element=>element.includes('list'));
+     removeArrayElement.map(element=>{
+       if(element!==staticCache){
+         caches.delete(element);
+       }
+     })
+ 
     })
   );
 });
