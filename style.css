@@ -17,12 +17,19 @@ body
 {
     min-height:100vh;
     background-size: 100% 100%;
+    background-attachment: fixed;
 }
 .main-heading
 {
     text-align: center;
-    font-size: 5rem;
+    font-size: 4rem;
     width:100%;
+    top:0;
+    left:0;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 25px 0 rgba(255,255,255,.2);
+    position: fixed;
+    z-index: 999;
     font-family: quicksand-bold,'baskerville old face';
     color:#00bf8f;
 }
@@ -30,7 +37,7 @@ body
 {
     min-height:500px;
     width:500px;
-    margin:3rem auto;
+    margin:10rem auto;
     padding:30px;
     background:#ffffff;
     box-shadow: 5px 5px 25px 0 rgba(46,61,73,.5);
@@ -203,6 +210,10 @@ body
 
 footer >h4
 {
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    left: 0;
     text-align: center;
     background-color: #00bf8f;
     color:#fff;
@@ -217,8 +228,12 @@ footer >h4
         background:url('bg-body.jpg') center no-repeat;
         background-size: cover;
     }
+    .main-heading{
+        font-size: 3rem;
+    }
     #mainList
     {
+        margin:5rem auto;
         width:100%;
     }
 }
