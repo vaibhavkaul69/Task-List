@@ -26,7 +26,7 @@ listContainer.addEventListener('click',deleteListItem);
         if(inputItemName.value=="" || inputItemName.value==" "  )
         {
             //Display an error message on the webpage.
-            document.getElementById('errorMessage').innerHTML='<h4 style="background:#0009; color:#00f260; border:1px solid #c31432;">Please Enter Some Value In The Text-Box.</h4>';
+            document.getElementById('errorMessage').innerHTML='<h4>Please Enter Some Value In The Text-Box.</h4>';
         }
         else
         {
@@ -41,7 +41,7 @@ listContainer.addEventListener('click',deleteListItem);
                 <p class='listContent'>${inputItemName.value}</p>
                  <button class='closeBtn'> X</button>
                  <button class="editBtn" onclick='editTask(this)'>
-                     <img src="pencil.png" alt='@'/>
+                     <img src="pencil.png" alt='Edit'/>
                  </button>
              </li>
             `;
@@ -107,14 +107,13 @@ listContainer.addEventListener('click',deleteListItem);
     };
 
     //Background image displays on complete loading
-
     const backImg=new Image();
-    backImg.src='bg-body.jpg';
+    backImg.src='bg-3.gif';
     backImg.addEventListener('load',()=>{
 
-         document.body.style.cssText="background-image:url('bg-body.jpg');"
+         document.body.style.cssText="background-image:url('bg-3.gif');"
     });
-
+    
     //When window loads then the list box appears
     window.addEventListener('load',()=>{
         setTimeout(fetchDataFromLocalStorage,1500);

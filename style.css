@@ -1,14 +1,21 @@
+@font-face{
+
+    font-family: quicksand-bold;
+    src: url('./Quicksand-Bold.ttf');
+  }
+  @font-face{
+    font-family: quicksand-light;
+    src: url('./Quicksand-Light.ttf');
+  }
 *
 {
     padding:10px;
     margin:0px;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif ;
 }
 body
 {
     min-height:100vh;
-    background-image:linear-gradient(to right bottom,#b92b27,#1565C0);
     background-size: 100% 100%;
 }
 .main-heading
@@ -16,19 +23,19 @@ body
     text-align: center;
     font-size: 5rem;
     width:100%;
-    font-weight:lighter;
+    font-family: quicksand-bold,'baskerville old face';
     color:#00bf8f;
 }
 #mainList
 {
     min-height:500px;
     width:500px;
-    background-color: #0009;
     margin:3rem auto;
     padding:30px;
+    background:#ffffff;
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.5);
     transform: translateY(-1000px);
     transition: all 0.5s ease-in-out;
-    box-shadow:0px 0px 8px 0px #000;
 }
 .inputListName
 {
@@ -41,7 +48,7 @@ body
     text-align:center;
     font-size:2rem;
     transform: translateX(2000px);
-    font-weight: lighter;
+    font-family: quicksand-bold,'baskerville old face';
     transition:all 1s ease-in-out;
     color:#00bf8f;
 }
@@ -62,8 +69,11 @@ body
     font-size: 1rem;
     float:left;
     text-align:left; 
-    color:#00bf8f;
-    font-weight: bolder;
+    outline: none;
+    color:#2c3e50;
+    font-family: quicksand-light,monospace;
+    text-transform: capitalize;
+    font-weight: 900;
     border:1px solid #0b8793;
     border-radius:10px; 
 }
@@ -79,13 +89,14 @@ body
     margin-top:10px;
     float:left;
     border:none;
+    outline: none;
     background:linear-gradient(to right,#2c3e50,#3498db);
-    filter: drop-shadow(0px 1px 5px #00f260 );
     color:#fff;
     font-weight:bold;
     border-radius:10px;
+    font-family: quicksand-light,monospace;
     font-size: 1rem;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 .inputListName > .inputName::placeholder
 {
@@ -102,6 +113,7 @@ body
     color:#c31432;
     font-weight: bold;
     display:block;
+    font-family: quicksand-light,monospace;
     margin-top:1rem;
 }
 
@@ -116,16 +128,18 @@ body
     width:100%;
     padding-top:15px;
     padding-right:45px;
+    box-shadow: 5px 5px 25px 0 rgba(18, 53, 82, 0.3);
     padding-bottom:15px;
     padding-left:5px;
     position: relative;
-    min-height:100px;
+    min-height:60px;
     margin-top:10px;
     text-align:left;
     word-break:break-all;
     border:1px solid #00bf8f;
     color:#00bf8f;
     font-weight: bolder;
+    font-family: quicksand-light,monospace;
     transition:all 1s ease-in-out;
 }
 #listContainer > li >p{
@@ -135,24 +149,31 @@ body
 
 #listContainer > li >p::before {
     counter-increment: section;
-    content: counter(section) ": ";
-    color:#00f260;
+    content: counter(section) ".  ";
+    font-family: quicksand-bold,'baskerville old face';
+    color:#2c3e50;
     width: 0px;
   }
 #listContainer > li >.closeBtn
 {
     position: absolute;
-    color:red;
+    color:#dc3545;
+    font-family: quicksand-bold;
     right:0;
     top:0;
-    border:none;
-    border-bottom:1px solid #000;
+    line-height: 5px;
     height:50%;
+    border:1px solid #0009;
     width:40px;
-    font-weight: bolder;
+    font-weight: 900;
     text-align: center;
     background:#00f260;
     outline: none;
+}
+#listContainer > li >.closeBtn:hover{
+    background:#dc3545;
+    border-color: #dc3545;;
+    color:#ffffff;
 }
 #listContainer > li >.editBtn
 {
@@ -160,11 +181,12 @@ body
     color:red;
     right:0px;
     outline: none;
+    font-family: quicksand-light;
     display: flex;
     align-items: center;
     justify-content: center;
     bottom:0;
-    border:none;
+    border:1px solid #0009;
     height:50%;
     width:40px;
     font-weight: bolder;
@@ -185,6 +207,7 @@ footer >h4
     background-color: #00bf8f;
     color:#fff;
     min-height:40px;
+    font-family: quicksand-bold,'baskerville old face';
 }
 
 @media only screen and (max-width:500px)
