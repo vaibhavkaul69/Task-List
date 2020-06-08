@@ -23,7 +23,7 @@ listContainer.addEventListener('click',deleteListItem);
         //This prevents the data of list from deleting when the function finishes its work.
         ev.preventDefault();
         
-        if(inputItemName.value.indexOf(' ')!==-1 || inputItemName.value=='')
+        if( inputItemName.value=='' || !/[a-zA-Z0-9]+/.test(inputItemName.value))
         {
             console.log(inputItemName.value);
             //Display an error message on the webpage.
@@ -104,7 +104,6 @@ listContainer.addEventListener('click',deleteListItem);
        let listItemName=document.getElementsByTagName('li');
         console.log("The number of list items are : "+listItemName.length);
        inputItemName.focus();
-       
     };
 
     //Background image displays on complete loading

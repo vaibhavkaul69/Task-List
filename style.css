@@ -214,6 +214,7 @@ footer >h4
     bottom: 0;
     width:100%;
     left: 0;
+    font-size: 20px;
     text-align: center;
     background-color: #00bf8f;
     color:#fff;
@@ -244,6 +245,6 @@ a{
 
 @media only screen and (max-width:400px){
     footer >h4{
-        font-size:12px;
+        font-size:15px;
     }
 }
