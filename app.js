@@ -23,8 +23,9 @@ listContainer.addEventListener('click',deleteListItem);
         //This prevents the data of list from deleting when the function finishes its work.
         ev.preventDefault();
         
-        if(inputItemName.value=="" || inputItemName.value==" "  )
+        if(inputItemName.value.indexOf(' ')!==-1 || inputItemName.value=='')
         {
+            console.log(inputItemName.value);
             //Display an error message on the webpage.
             document.getElementById('errorMessage').innerHTML='<h4>Please Enter Some Value In The Text-Box.</h4>';
         }
