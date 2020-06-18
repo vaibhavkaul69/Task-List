@@ -210,10 +210,8 @@ body
 
 footer >h4
 {
-    position: fixed;
-    bottom: 0;
+    
     width:100%;
-    left: 0;
     font-size: 20px;
     text-align: center;
     background-color: #00bf8f;
@@ -227,11 +225,6 @@ a{
 
 @media only screen and (max-width:500px)
 {
-    body
-    {
-        background:url('bg-body.jpg') center no-repeat;
-        background-size: cover;
-    }
     .main-heading{
         font-size: 3rem;
     }
