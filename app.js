@@ -106,14 +106,7 @@ listContainer.addEventListener('click',deleteListItem);
        inputItemName.focus();
     };
 
-    //Background image displays on complete loading
-    const backImg=new Image();
-    backImg.src='bg-3.gif';
-    backImg.addEventListener('load',()=>{
-
-         document.body.style.cssText="background-image:url('bg-3.gif');"
-    });
-    
+   
     //When window loads then the list box appears
     window.addEventListener('load',()=>{
         setTimeout(fetchDataFromLocalStorage,1500);
