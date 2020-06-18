@@ -1,4 +1,4 @@
-const staticCache = "list-v2";
+const staticCache = "list-v3";
 const assets = [
   "./",  
   "./index.html",
