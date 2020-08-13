@@ -1,6 +1,6 @@
 /** @format */
 
-const staticCache = 'list-v25 ';
+const staticCache = 'list-v26 ';
 const assets = [
 	'./',
 	'./index.html',
@@ -19,6 +19,8 @@ const assets = [
 	'./icon-512x512.png',
 	'./pencil.png',
 	'./done.png',
+	'./Quicksand-Bold.ttf',
+	'./Quicksand-Light.ttf',
 ];
 self.addEventListener('install', (installEvent) => {
 	installEvent.waitUntil(
