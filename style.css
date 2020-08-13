@@ -1,10 +1,12 @@
+/** @format */
+
 @font-face {
 	font-family: quicksand-bold;
-	src: url("./Quicksand-Bold.ttf");
+	src: url('./Quicksand-Bold.ttf');
 }
 @font-face {
 	font-family: quicksand-light;
-	src: url("./Quicksand-Light.ttf");
+	src: url('./Quicksand-Light.ttf');
 }
 * {
 	padding: 10px;
@@ -27,7 +29,7 @@ body {
 	box-shadow: 5px 5px 25px 0 rgba(18, 53, 82, 0.3);
 	position: fixed;
 	z-index: 999;
-	font-family: quicksand-bold, "baskerville old face";
+	font-family: quicksand-bold, 'baskerville old face';
 	color: #00bf8f;
 }
 #mainList {
@@ -48,7 +50,7 @@ body {
 .inputListName > .addItemHeading {
 	text-align: center;
 	font-size: 2.3rem;
-	font-family: quicksand-bold, "baskerville old face";
+	font-family: quicksand-bold, 'baskerville old face';
 	transition: all 1s ease-in-out;
 	color: #fff;
 }
@@ -68,7 +70,7 @@ body {
 	text-align: left;
 	background-color: transparent;
 	outline: none;
-	color: #00bf8f;
+	color: #fff;
 	font-family: quicksand-light, monospace;
 	text-transform: capitalize;
 	font-weight: 900;
@@ -81,7 +83,7 @@ body {
 	border-bottom: 1px solid #00bf8f;
 }
 
-.inputListName > input[type="submit"] {
+.inputListName > input[type='submit'] {
 	height: 50px;
 	width: 150px;
 	margin-left: 10px;
@@ -105,7 +107,7 @@ body {
 .inputListName > .inputName::placeholder {
 	font-weight: lighter;
 }
-.inputListName > input[type="submit"]:hover {
+.inputListName > input[type='submit']:hover {
 	color: #00bf8f;
 	border: 1px solid #00bf8f;
 	background: none;
@@ -129,7 +131,7 @@ body {
 	width: 100%;
 	padding-top: 15px;
 	padding-right: 45px;
-	box-shadow: 5px 5px 25px 0 rgba(18, 53, 82, 0.3);
+	box-shadow: 5px 5px 25px 0 rgba(18, 53, 82, 0.23);
 	padding-bottom: 15px;
 	padding-left: 5px;
 	position: relative;
@@ -138,7 +140,7 @@ body {
 	text-align: left;
 	word-break: break-all;
 	/*border: 1px solid #00bf8f;*/
-	color: #fff;
+	color: #00bf8f;
 	font-weight: bolder;
 	font-family: quicksand-light, monospace;
 	transition: all 1s ease-in-out;
@@ -150,8 +152,8 @@ body {
 
 #listContainer > li > p::before {
 	counter-increment: section;
-	content: counter(section) ".  ";
-	font-family: quicksand-bold, "baskerville old face";
+	content: counter(section) '.  ';
+	font-family: quicksand-bold, 'baskerville old face';
 	color: #fff;
 	width: 0px;
 }
@@ -206,7 +208,7 @@ footer > h4 {
 	background-color: #00bf8f;
 	color: #fff;
 	min-height: 40px;
-	font-family: quicksand-bold, "baskerville old face";
+	font-family: quicksand-bold, 'baskerville old face';
 }
 a {
 	color: #fff;
@@ -228,12 +230,12 @@ a {
 		width: 100%;
 		padding: 0px;
 	}
-	.inputListName > input[type="submit"] {
+	.inputListName > input[type='submit'] {
 		top: 180px;
 	}
 }
 @media only screen and (max-width: 460px) and (min-width: 350px) {
-	.inputListName > input[type="submit"] {
+	.inputListName > input[type='submit'] {
 		top: 220px;
 		width: 100px;
 	}
@@ -245,7 +247,7 @@ a {
 	}
 }
 @media only screen and (max-width: 350px) {
-	.inputListName > input[type="submit"] {
+	.inputListName > input[type='submit'] {
 		top: 220px;
 		width: 100px;
 	}
