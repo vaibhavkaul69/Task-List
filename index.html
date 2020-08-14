@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +23,15 @@
 		<meta name="apple-mobile-web-app-status-bar" content="#00bf8f;" />
 	</head>
 	<body>
-		<h1 class="main-heading">TODO List</h1>
+		<h1 class="main-heading">
+			Task List
+			<a
+				href="https://www.linkedin.com/in/vaibhav-kaul-ab5941182/"
+				target="_blank"
+				class="top-nav_profile-link"
+				>By : Vaibhav Kaul</a
+			>
+		</h1>
 		<div class="list" id="mainList">
 			<form class="inputListName" name="form-input" accept="index.html">
 				<h4 class="addItemHeading">Add Items To The List</h4>
@@ -30,27 +40,18 @@
 				<input type="text" class="inputName" placeholder="Enter Task" />
 				<input type="submit" class="submitName" value="Add" />
 			</form>
-			<ul id="listContainer"> </ul>
+			<ul id="listContainer"></ul>
 		</div>
-		<footer>
-			<h4
-				>Made With &hearts; By<a
-					href="https://www.linkedin.com/in/vaibhav-kaul-ab5941182/"
-					target="_blank"
-					>Vaibhav Kaul</a
-				></h4
-			>
-		</footer>
 	</body>
 
 	<script>
 		//Check if the service worker exists in the navigator object.
-		if ("serviceWorker" in navigator) {
-			window.addEventListener("load", function () {
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
 				navigator.serviceWorker
-					.register("service-worker.js")
-					.then((res) => console.log("service worker registered"))
-					.catch((err) => console.log("service worker not registered", err));
+					.register('service-worker.js')
+					.then((res) => console.log('service worker registered'))
+					.catch((err) => console.log('service worker not registered', err));
 			});
 		}
 	</script>

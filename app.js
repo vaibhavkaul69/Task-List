@@ -1,3 +1,5 @@
+/** @format */
+
 //Here we select the input whose value will be the name of new create list whithin list container.
 var addItemBtn = document.querySelector('input[type="submit"]');
 
@@ -5,33 +7,37 @@ var addItemBtn = document.querySelector('input[type="submit"]');
 let editable = true;
 
 //Here we select the add button that adds the the value of above input to list container.
-var inputItemName = document.querySelector(".inputName");
+var inputItemName = document.querySelector('.inputName');
 
 //Trigger an click event when we click the add buttton and call addListItem() function.
-addItemBtn.addEventListener("click", addListItem);
+addItemBtn.addEventListener('click', addListItem);
 
 //Here we select the list container.
-const listContainer = document.getElementById("listContainer");
+const listContainer = document.getElementById('listContainer');
 
 //Add an event listener on the list container.
-listContainer.addEventListener("click", deleteListItem);
+listContainer.addEventListener('click', deleteListItem);
 
 //Function is called when add button is clicked.
 function addListItem(ev) {
 	//This prevents the data of list from deleting when the function finishes its work.
 	ev.preventDefault();
 
-	if (inputItemName.value == "" || !/[a-zA-Z0-9]+/.test(inputItemName.value)) {
+	if (inputItemName.value == '' || !/[a-zA-Z0-9]+/.test(inputItemName.value)) {
 		console.log(inputItemName.value);
 		//Display an error message on the webpage.
-		inputItemName.classList.add("errorMessage");
+		inputItemName.classList.add('errorMessage');
 	} else {
-		inputItemName.classList.remove("errorMessage");
+		inputItemName.classList.remove('errorMessage');
 		//Remove the error message from the page.
 		//document.getElementById("errorMessage").innerHTML = "";
 
 		//Add the list item in the list container here by using innerHTML property.
-		listContainer.innerHTML += `
+		if (
+			inputItemName.value.indexOf('https') == -1 ||
+			inputItemName.value.indexOf('http') == -1
+		) {
+			listContainer.innerHTML += `
             <li class='listItem'>
                 <p class='listContent'>${inputItemName.value}</p>
                  <button class='closeBtn'> X</button>
@@ -40,15 +46,26 @@ function addListItem(ev) {
                  </button>
              </li>
             `;
+		} else {
+			listContainer.innerHTML += `
+            <li class='listItem'>
+                <a href='${inputItemName.value}' onclick='openLink(this.href);' target='_blank' class='listContentLink'>${inputItemName.value}</a>
+                 <button class='closeBtn'> X</button>
+                 <button class="editBtn" onclick='editTask(this)'>
+                     <img src="pencil.png" alt='Edit'/>
+                 </button>
+             </li>
+            `;
+		}
 
 		//Add the list container into local storage by stringifying it.
 		localStorage.setItem(
-			"localListItems",
-			JSON.stringify(listContainer.innerHTML)
+			'localListItems',
+			JSON.stringify(listContainer.innerHTML),
 		);
 
 		//Once a list item is added clear/reset the input.
-		inputItemName.value = "";
+		inputItemName.value = '';
 	}
 }
 
@@ -57,38 +74,42 @@ function deleteListItem(e) {
 	e.preventDefault();
 
 	//Check which child of list container contains class=closeBtn and point to that child.
-	if (e.target.classList.contains("closeBtn")) {
-		if (confirm("Are You Sure About That??")) {
+	if (e.target.classList.contains('closeBtn')) {
+		if (confirm('Are You Sure About That??')) {
 			//Once the child having closeBtn class is found then removes its parent from the DOM.
 			e.target.parentNode.remove();
 		}
 
 		//Update the list container to local storage.
 		localStorage.setItem(
-			"localListItems",
-			JSON.stringify(listContainer.innerHTML)
+			'localListItems',
+			JSON.stringify(listContainer.innerHTML),
 		);
 	}
 }
 
+function openLink(link) {
+	console.log(link);
+	window.open(link, '_blank');
+}
 function editTask(e) {
 	if (editable) {
-		e.parentNode.children[0].setAttribute("contenteditable", "true");
+		e.parentNode.children[0].setAttribute('contenteditable', 'true');
 		console.log(e.children[0].src);
-		e.children[0].src = "done.png";
+		e.children[0].src = 'done.png';
 		editable = false;
 	} else {
-		e.parentNode.children[0].setAttribute("contenteditable", "false");
-		e.children[0].src = "pencil.png";
+		e.parentNode.children[0].setAttribute('contenteditable', 'false');
+		e.children[0].src = 'pencil.png';
 		editable = true;
 		if (e.parentNode.children[0].textContent.length > 0) {
 			localStorage.setItem(
-				"localListItems",
-				JSON.stringify(listContainer.innerHTML)
+				'localListItems',
+				JSON.stringify(listContainer.innerHTML),
 			);
 		} else {
 			alert(
-				"Since You Have Not Entered Anything \n So The Previous Value Will Be Displayed on Page Reload."
+				'Since You Have Not Entered Anything \n So The Previous Value Will Be Displayed on Page Reload.',
 			);
 		}
 	}
@@ -96,16 +117,16 @@ function editTask(e) {
 
 //WHen the body loads then fetch the list items from the local storage and append them in the list container.
 const fetchDataFromLocalStorage = () => {
-	listContainer.innerHTML = JSON.parse(localStorage.getItem("localListItems"));
-	let listItemName = document.getElementsByTagName("li");
-	console.log("The number of list items are : " + listItemName.length);
+	listContainer.innerHTML = JSON.parse(localStorage.getItem('localListItems'));
+	let listItemName = document.getElementsByTagName('li');
+	console.log('The number of list items are : ' + listItemName.length);
 	inputItemName.focus();
 };
 
 //When window loads then the list box appears
 
-window.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("mainList").style.cssText = "opacity:1;";
+window.addEventListener('DOMContentLoaded', () => {
+	document.getElementById('mainList').style.cssText = 'opacity:1;';
 	fetchDataFromLocalStorage();
-	listContainer.style.cssText = "opacity:1;";
+	listContainer.style.cssText = 'opacity:1;';
 });
