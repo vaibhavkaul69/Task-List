@@ -1,6 +1,6 @@
 /** @format */
 
-const staticCache = 'list-v52';
+const staticCache = 'list-v56';
 const assets = [
 	'./',
 	'./index.html',
