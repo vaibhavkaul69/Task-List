@@ -48,13 +48,14 @@
 		//Check if the service worker exists in the navigator object.
 		if ('serviceWorker' in navigator) {
 			window.addEventListener('load', function () {
-				notify();
+				//notify();
 				navigator.serviceWorker
 					.register('service-worker.js')
 					.then((res) => console.log('service worker registered'))
 					.catch((err) => console.log('service worker not registered', err));
 			});
 		}
+		/*
 		if (isPushNotificationSupported()) {
 			initializePushNotifications()
 				.then((res) => console.log(res))
@@ -92,12 +93,14 @@
 		/**
 		 * asks user consent to receive push notifications and returns the response of the user, one of granted, default, denied
 		 */
+		/*
 		function initializePushNotifications() {
 			// request user grant to show notification
 			return Notification.requestPermission(function (result) {
 				return result;
 			});
 		}
+		*/
 	</script>
 
 	<script src="app.js"></script>
