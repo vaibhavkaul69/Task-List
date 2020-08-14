@@ -134,26 +134,11 @@ window.addEventListener('DOMContentLoaded', () => {
 /**
  * checks if Push notification and service workers are supported by your browser
  */
-function isPushNotificationSupported() {
-	return 'serviceWorker' in navigator && 'PushManager' in window;
-}
-if (isPushNotificationSupported()) {
-	initializePushNotifications()
-		.then((res) => console.log(res))
-		.catch((err) => console.log(err));
-}
-/**
- * asks user consent to receive push notifications and returns the response of the user, one of granted, default, denied
- */
-function initializePushNotifications() {
-	// request user grant to show notification
-	return Notification.requestPermission(function (result) {
-		return result;
-	});
-}
+
 /**
  * shows a notification
  */
+/*
 function sendNotification() {
 	const img = './bg-body.jpg';
 	const text = 'Take a look at this brand new t-shirt!';
@@ -178,3 +163,4 @@ function sendNotification() {
 	});
 }
 sendNotification();
+*/
