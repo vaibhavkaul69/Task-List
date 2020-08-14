@@ -130,3 +130,51 @@ window.addEventListener('DOMContentLoaded', () => {
 	fetchDataFromLocalStorage();
 	listContainer.style.cssText = 'opacity:1;';
 });
+
+/**
+ * checks if Push notification and service workers are supported by your browser
+ */
+function isPushNotificationSupported() {
+	return 'serviceWorker' in navigator && 'PushManager' in window;
+}
+if (isPushNotificationSupported()) {
+	initializePushNotifications()
+		.then((res) => console.log(res))
+		.catch((err) => console.log(err));
+}
+/**
+ * asks user consent to receive push notifications and returns the response of the user, one of granted, default, denied
+ */
+function initializePushNotifications() {
+	// request user grant to show notification
+	return Notification.requestPermission(function (result) {
+		return result;
+	});
+}
+/**
+ * shows a notification
+ */
+function sendNotification() {
+	const img = './bg-body.jpg';
+	const text = 'Take a look at this brand new t-shirt!';
+	const title = 'New Product Available';
+	const options = {
+		body: text,
+		icon: './app-icon.png',
+		vibrate: [200, 100, 200],
+		tag: 'new-product',
+		image: img,
+		badge: 'https://spyna.it/icons/android-icon-192x192.png',
+		actions: [
+			{
+				action: 'Detail',
+				title: 'View',
+				icon: 'https://via.placeholder.com/128/ff0000',
+			},
+		],
+	};
+	navigator.serviceWorker.ready.then(function (serviceWorker) {
+		serviceWorker.showNotification(title, options);
+	});
+}
+sendNotification();
