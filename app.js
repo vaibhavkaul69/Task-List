@@ -94,7 +94,8 @@ function openLink(link) {
 }
 function editTask(e) {
 	if (editable) {
-		e.parentNode.style.cssText = 'border:1px solid #dc3545;';
+		//Add a border of 1px to the editable true field
+		e.parentNode.style.cssText = 'border:1px solid #fff;';
 		e.parentNode.children[0].setAttribute('contenteditable', 'true');
 		console.log(e.children[0].src);
 		e.children[0].src = 'done.png';
